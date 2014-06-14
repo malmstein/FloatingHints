@@ -1,5 +1,100 @@
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+out/
+build.log
+build-log.xml
+
+#copied from app
+unit-tests/AndroidManifest.xml
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+.project
+.classpath
+.settings
+target/
+classes/
+gen-external-apklibs/
+tmp/
+
+# IDEA Ignores
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Android
+local.properties
+
+# MAC
+*.DS_Store
+
+# api scripts
+session.key
+response.txt
+.pt
+*.orig
+terminator/
+
+=======
+
+# Robolectric helper to find the manifest
+/AndroidManifest.xml
+
+.gradle/
+
+app/build/
+build/
+core/build/
+
+
+*~
 .gradle
-/local.properties
-/.idea/workspace.xml
-.DS_Store
 /build
+/out
+/intTestHomeDir
+/subprojects/*/out
+/intellij
+/buildSrc/lib
+/buildSrc/build
+/subprojects/*/build
+/subprojects/docs/src/samples/*/*/build
+/website/build
+/website/website.iml
+/website/website.ipr
+/website/website.iws
+/performanceTest/build
+/subprojects/*/ide
+/*.iml
+/*.ipr
+/*.iws
+/subprojects/*/*.iml
+/buildSrc/*.ipr
+/buildSrc/*.iws
+/buildSrc/*.iml
+/buildSrc/out
+*.classpath
+*.project
+*.settings
+/bin
+/subprojects/*/bin
+.DS_Store
+/performanceTest/lib
+.textmate
+/incoming-distributions
+.idea
+*.sublime-*
+google_play_services/build/
+.gradletasknamecache
