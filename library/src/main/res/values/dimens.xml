@@ -1,0 +1,6 @@
+<resources>
+
+  <!-- TEXT SIZE -->
+  <dimen name="text_xs">12sp</dimen>
+
+</resources>

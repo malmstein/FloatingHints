@@ -1,0 +1,10 @@
+<resources>
+
+  <!-- FLOATING.FONTS -->
+  <color name="font_black">#000000</color>
+  <color name="font_grey">#9f9f9f</color>
+  <color name="font_white">#ffffff</color>
+  <color name="font_anthrazit">#252525</color>
+  <color name="font_yellow">#fff8ab0f</color>
+
+</resources>
