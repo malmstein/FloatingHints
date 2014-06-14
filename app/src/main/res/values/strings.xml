@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">FloatingHints</string>
+
+  <string name="app_name">FloatingHints</string>
+
+  <!-- Activity title -->
+  <string name="title_activity_float_demo">FloatingHints Demo</string>
+
+  <!-- Strings related to forms -->
+  <string name="hint_email">Email</string>
+
 </resources>
