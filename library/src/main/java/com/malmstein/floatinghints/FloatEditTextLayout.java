@@ -50,6 +50,7 @@ public final class FloatEditTextLayout extends FrameLayout {
 
     private final Animation inAnimation;
     private final Animation outAnimation;
+    private boolean isAnimating;
 
     public FloatEditTextLayout(Context context) {
         this(context, null);
@@ -123,12 +124,12 @@ public final class FloatEditTextLayout extends FrameLayout {
             public void afterTextChanged(Editable s) {
                 if (TextUtils.isEmpty(s)) {
                     // The text is empty, so hide the label if it is visible
-                    if (mLabel.getVisibility() == View.VISIBLE) {
+                    if (mLabel.getVisibility() == View.VISIBLE || isAnimating) {
                         hideLabel();
                     }
                 } else {
                     // The text is not empty, so show the label if it is not visible
-                    if (mLabel.getVisibility() != View.VISIBLE) {
+                    if (mLabel.getVisibility() != View.VISIBLE & !isAnimating) {
                         showLabel();
                     }
                 }
@@ -197,11 +198,14 @@ public final class FloatEditTextLayout extends FrameLayout {
      */
     private Animation.AnimationListener showLabelAnimationListener = new Animation.AnimationListener() {
         @Override
-        public void onAnimationStart(Animation animation) {}
+        public void onAnimationStart(Animation animation) {
+            isAnimating = true;
+        }
 
         @Override
         public void onAnimationEnd(Animation animation) {
             mLabel.setVisibility(View.VISIBLE);
+            isAnimating = false;
         }
 
         @Override
@@ -213,11 +217,14 @@ public final class FloatEditTextLayout extends FrameLayout {
      */
     private Animation.AnimationListener hideLabelAnimationListener = new Animation.AnimationListener() {
         @Override
-        public void onAnimationStart(Animation animation) {}
+        public void onAnimationStart(Animation animation) {
+            isAnimating = true;
+        }
 
         @Override
         public void onAnimationEnd(Animation animation) {
             mLabel.setVisibility(View.GONE);
+            isAnimating = false;
         }
 
         @Override
