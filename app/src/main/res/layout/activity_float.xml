@@ -22,9 +22,9 @@
     android:layout_marginTop="@dimen/form_horizontal_padding"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:floatLayoutInAnimation="@anim/abc_fade_in"
-    app:floatLayoutOutAnimation="@anim/abc_fade_out"
-    app:floatLayoutTextAppearance="@style/FloatLabel.Label">
+    app:floatingHintInAnimation="@anim/abc_fade_in"
+    app:floatingHintOutAnimation="@anim/abc_fade_out"
+    app:floatingHintTextAppearance="@style/FloatLabel.Label">
 
     <EditText
       style="@style/FloatLabel.Form.Text"
@@ -39,7 +39,7 @@
   <com.malmstein.floatinghints.FloatingHintEditTextLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:floatLayoutTextAppearance="@style/FloatLabel.Label">
+    app:floatingHintTextAppearance="@style/FloatLabel.Label">
 
     <EditText
       style="@style/FloatLabel.Form.Text"
