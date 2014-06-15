@@ -4,7 +4,7 @@ FloatingHints
 Custom implementation of the Floating Label pattern, the animation used to show and hide the label
 can be customised from the xml file.
 
-![Demo gif](https://github.com/malmstein/FloatingHints/blob/master/floating.gif)
+![Demo gif](https://raw.githubusercontent.com/malmstein/FloatingHints/master/floating.gif)
 
 Dependencies
 ------------
