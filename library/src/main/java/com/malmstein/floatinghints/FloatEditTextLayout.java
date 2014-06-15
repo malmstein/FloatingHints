@@ -66,11 +66,11 @@ public final class FloatEditTextLayout extends FrameLayout {
                 .obtainStyledAttributes(attrs, R.styleable.FloatEditTextLayout);
 
         inAnimation = AnimationUtils.loadAnimation(getContext(),
-                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutInAnimation, android.R.anim.fade_in));
+                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutInAnimation, R.anim.slide_in_top));
         inAnimation.setAnimationListener(showLabelAnimationListener);
 
         outAnimation = AnimationUtils.loadAnimation(getContext(),
-                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutOutAnimation, android.R.anim.fade_out));
+                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutOutAnimation, R.anim.slide_out_bottom));
         outAnimation.setAnimationListener(hideLabelAnimationListener);
 
         final int sidePadding = a.getDimensionPixelSize(
@@ -175,16 +175,6 @@ public final class FloatEditTextLayout extends FrameLayout {
      */
     private void showLabel() {
         mLabel.startAnimation(inAnimation);
-
-//
-//        mLabel.setVisibility(View.VISIBLE);
-//        mLabel.setAlpha(0f);
-//        mLabel.setTranslationY(mLabel.getHeight());
-//        mLabel.animate()
-//                .alpha(1f)
-//                .translationY(0f)
-//                .setDuration(ANIMATION_DURATION)
-//                .setListener(null).start();
     }
 
     /**
@@ -192,18 +182,6 @@ public final class FloatEditTextLayout extends FrameLayout {
      */
     private void hideLabel() {
         mLabel.startAnimation(outAnimation);
-//        mLabel.setAlpha(1f);
-//        mLabel.setTranslationY(0f);
-//        mLabel.animate()
-//                .alpha(0f)
-//                .translationY(mLabel.getHeight())
-//                .setDuration(ANIMATION_DURATION)
-//                .setListener(new AnimatorListenerAdapter() {
-//                    @Override
-//                    public void onAnimationEnd(Animator animation) {
-//                        mLabel.setVisibility(View.GONE);
-//                    }
-//                }).start();
     }
 
     /**
