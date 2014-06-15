@@ -2,8 +2,10 @@
 <resources>
 
   <declare-styleable name="FloatEditTextLayout">
-    <attr name="floatLabelTextAppearance" format="reference" />
-    <attr name="floatLabelSidePadding" format="reference|dimension" />
+    <attr name="floatLayoutTextAppearance" format="reference" />
+    <attr name="floatLayoutInAnimation" format="reference" />
+    <attr name="floatLayoutOutAnimation" format="reference" />
+    <attr name="floatLayoutSidePadding" format="reference|dimension" />
   </declare-styleable>
 
 </resources>
