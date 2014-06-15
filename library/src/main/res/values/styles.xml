@@ -1,9 +1,0 @@
-<resources>
-
-  <style name="FloatLabel.Text" parent="android:TextAppearance.Small">
-    <item name="android:textColor">@color/float_edit_text_layout_color</item>
-    <item name="android:textSize">@dimen/text_xs</item>
-    <item name="android:textStyle">bold</item>
-  </style>
-
-</resources>
