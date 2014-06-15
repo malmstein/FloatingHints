@@ -41,7 +41,7 @@ import android.widget.TextView;
  * @see <a href="https://dribbble.com/shots/1254439--GIF-Mobile-Form-Interaction">Matt D. Smith on Dribble</a>
  * @see <a href="http://bradfrostweb.com/blog/post/float-label-pattern/">Brad Frost's blog post</a>
  */
-public final class FloatEditTextLayout extends FrameLayout {
+public final class FloatingHintEditTextLayout extends FrameLayout {
 
     private static final float DEFAULT_PADDING_LEFT_RIGHT_DP = 12f;
 
@@ -52,30 +52,30 @@ public final class FloatEditTextLayout extends FrameLayout {
     private final Animation outAnimation;
     private boolean isAnimating;
 
-    public FloatEditTextLayout(Context context) {
+    public FloatingHintEditTextLayout(Context context) {
         this(context, null);
     }
 
-    public FloatEditTextLayout(Context context, AttributeSet attrs) {
+    public FloatingHintEditTextLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public FloatEditTextLayout(Context context, AttributeSet attrs, int defStyle) {
+    public FloatingHintEditTextLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
         final TypedArray a = context
-                .obtainStyledAttributes(attrs, R.styleable.FloatEditTextLayout);
+                .obtainStyledAttributes(attrs, R.styleable.FloatingHintEditTextLayout);
 
         inAnimation = AnimationUtils.loadAnimation(getContext(),
-                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutInAnimation, R.anim.slide_in_top));
+                a.getResourceId(R.styleable.FloatingHintEditTextLayout_floatingHintInAnimation, R.anim.slide_in_top));
         inAnimation.setAnimationListener(showLabelAnimationListener);
 
         outAnimation = AnimationUtils.loadAnimation(getContext(),
-                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutOutAnimation, R.anim.slide_out_bottom));
+                a.getResourceId(R.styleable.FloatingHintEditTextLayout_floatingHintOutAnimation, R.anim.slide_out_bottom));
         outAnimation.setAnimationListener(hideLabelAnimationListener);
 
         final int sidePadding = a.getDimensionPixelSize(
-                R.styleable.FloatEditTextLayout_floatLayoutSidePadding,
+                R.styleable.FloatingHintEditTextLayout_floatingHintSidePadding,
                 dipsToPix(DEFAULT_PADDING_LEFT_RIGHT_DP));
 
         mLabel = new TextView(context);
@@ -83,7 +83,7 @@ public final class FloatEditTextLayout extends FrameLayout {
         mLabel.setVisibility(INVISIBLE);
 
         mLabel.setTextAppearance(context,
-                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutTextAppearance,
+                a.getResourceId(R.styleable.FloatingHintEditTextLayout_floatingHintTextAppearance,
                         android.R.style.TextAppearance_Small)
         );
 
@@ -95,13 +95,10 @@ public final class FloatEditTextLayout extends FrameLayout {
     @Override
     public final void addView(View child, int index, ViewGroup.LayoutParams params) {
         if (child instanceof EditText) {
-            // If we already have an EditText, throw an exception
             if (mEditText != null) {
                 throw new IllegalArgumentException("We already have an EditText, can only have one");
             }
 
-            // Update the layout params so that the EditText is at the bottom, with enough top
-            // margin to show the label
             final LayoutParams lp = new LayoutParams(params);
             lp.gravity = Gravity.BOTTOM;
             lp.topMargin = (int) mLabel.getTextSize();
@@ -110,25 +107,20 @@ public final class FloatEditTextLayout extends FrameLayout {
             setEditText((EditText) child);
         }
 
-        // Carry on adding the View...
         super.addView(child, index, params);
     }
 
     private void setEditText(EditText editText) {
         mEditText = editText;
-
-        // Add a TextWatcher so that we know when the text input has changed
         mEditText.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (TextUtils.isEmpty(s)) {
-                    // The text is empty, so hide the label if it is visible
                     if (mLabel.getVisibility() == View.VISIBLE || isAnimating) {
                         hideLabel();
                     }
                 } else {
-                    // The text is not empty, so show the label if it is not visible
                     if (mLabel.getVisibility() != View.VISIBLE & !isAnimating) {
                         showLabel();
                     }
@@ -145,8 +137,6 @@ public final class FloatEditTextLayout extends FrameLayout {
 
         });
 
-        // Add focus listener to the EditText so that we can notify the label that it is activated.
-        // Allows the use of a ColorStateList for the text color on the label
         mEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean focused) {

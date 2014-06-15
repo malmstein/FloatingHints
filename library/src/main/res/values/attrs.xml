@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <declare-styleable name="FloatEditTextLayout">
-    <attr name="floatLayoutTextAppearance" format="reference" />
-    <attr name="floatLayoutInAnimation" format="reference" />
-    <attr name="floatLayoutOutAnimation" format="reference" />
-    <attr name="floatLayoutSidePadding" format="reference|dimension" />
+  <declare-styleable name="FloatingHintEditTextLayout">
+    <attr name="floatingHintTextAppearance" format="reference" />
+    <attr name="floatingHintSidePadding" format="reference|dimension" />
+    <attr name="floatingHintInAnimation" format="reference" />
+    <attr name="floatingHintOutAnimation" format="reference" />
   </declare-styleable>
 
 </resources>
