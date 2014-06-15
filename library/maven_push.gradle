@@ -49,7 +49,7 @@ uploadArchives {
 
                     scm {
                         url 'https://github.com/malmstein/FloatingHints'
-                        connection 'scm:https://github.com//malmstein/FloatingHints.git'
+                        connection 'scm:https://github.com/malmstein/FloatingHints.git'
                         developerConnection 'scm:git@github.com:/malmstein/FloatingHints.git'
                     }
 
