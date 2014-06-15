@@ -5,7 +5,7 @@
   </style>
 
   <style name="FloatLabel.Form.Header" parent="android:TextAppearance.Large">
-    <item name="android:textColor">@color/float_edit_text_layout_color</item>
+    <item name="android:textColor">@color/font_grey</item>
     <item name="android:textSize">@dimen/text_s</item>
     <item name="android:paddingBottom">@dimen/form_vertical_padding</item>
     <item name="android:paddingTop">@dimen/form_vertical_padding</item>
