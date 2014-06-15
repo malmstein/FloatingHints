@@ -16,8 +16,6 @@ package com.malmstein.floatinghints;
  * limitations under the License.
  */
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
@@ -28,10 +26,11 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 
 /**
  * Layout composed by an {@link android.widget.EditText} and a {@link android.widget.TextView} to show a
@@ -44,12 +43,13 @@ import android.widget.TextView;
  */
 public final class FloatEditTextLayout extends FrameLayout {
 
-    private static final long ANIMATION_DURATION = 150;
-
     private static final float DEFAULT_PADDING_LEFT_RIGHT_DP = 12f;
 
     private EditText mEditText;
     private TextView mLabel;
+
+    private final Animation inAnimation;
+    private final Animation outAnimation;
 
     public FloatEditTextLayout(Context context) {
         this(context, null);
@@ -65,15 +65,24 @@ public final class FloatEditTextLayout extends FrameLayout {
         final TypedArray a = context
                 .obtainStyledAttributes(attrs, R.styleable.FloatEditTextLayout);
 
+        inAnimation = AnimationUtils.loadAnimation(getContext(),
+                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutInAnimation, android.R.anim.fade_in));
+        inAnimation.setAnimationListener(showLabelAnimationListener);
+
+        outAnimation = AnimationUtils.loadAnimation(getContext(),
+                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutOutAnimation, android.R.anim.fade_out));
+        outAnimation.setAnimationListener(hideLabelAnimationListener);
+
         final int sidePadding = a.getDimensionPixelSize(
-                R.styleable.FloatEditTextLayout_floatLabelSidePadding,
+                R.styleable.FloatEditTextLayout_floatLayoutSidePadding,
                 dipsToPix(DEFAULT_PADDING_LEFT_RIGHT_DP));
+
         mLabel = new TextView(context);
         mLabel.setPadding(sidePadding, 0, sidePadding, 0);
         mLabel.setVisibility(INVISIBLE);
 
         mLabel.setTextAppearance(context,
-                a.getResourceId(R.styleable.FloatEditTextLayout_floatLabelTextAppearance,
+                a.getResourceId(R.styleable.FloatEditTextLayout_floatLayoutTextAppearance,
                         android.R.style.TextAppearance_Small)
         );
 
@@ -165,32 +174,36 @@ public final class FloatEditTextLayout extends FrameLayout {
      * Show the label using an animation
      */
     private void showLabel() {
-        mLabel.setVisibility(View.VISIBLE);
-        mLabel.setAlpha(0f);
-        mLabel.setTranslationY(mLabel.getHeight());
-        mLabel.animate()
-                .alpha(1f)
-                .translationY(0f)
-                .setDuration(ANIMATION_DURATION)
-                .setListener(null).start();
+        mLabel.startAnimation(inAnimation);
+
+//
+//        mLabel.setVisibility(View.VISIBLE);
+//        mLabel.setAlpha(0f);
+//        mLabel.setTranslationY(mLabel.getHeight());
+//        mLabel.animate()
+//                .alpha(1f)
+//                .translationY(0f)
+//                .setDuration(ANIMATION_DURATION)
+//                .setListener(null).start();
     }
 
     /**
      * Hide the label using an animation
      */
     private void hideLabel() {
-        mLabel.setAlpha(1f);
-        mLabel.setTranslationY(0f);
-        mLabel.animate()
-                .alpha(0f)
-                .translationY(mLabel.getHeight())
-                .setDuration(ANIMATION_DURATION)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        mLabel.setVisibility(View.GONE);
-                    }
-                }).start();
+        mLabel.startAnimation(outAnimation);
+//        mLabel.setAlpha(1f);
+//        mLabel.setTranslationY(0f);
+//        mLabel.animate()
+//                .alpha(0f)
+//                .translationY(mLabel.getHeight())
+//                .setDuration(ANIMATION_DURATION)
+//                .setListener(new AnimatorListenerAdapter() {
+//                    @Override
+//                    public void onAnimationEnd(Animator animation) {
+//                        mLabel.setVisibility(View.GONE);
+//                    }
+//                }).start();
     }
 
     /**
@@ -200,4 +213,36 @@ public final class FloatEditTextLayout extends FrameLayout {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dps,
                 getResources().getDisplayMetrics());
     }
+
+    /**
+     * Animation listener triggered when showing the label
+     */
+    private Animation.AnimationListener showLabelAnimationListener = new Animation.AnimationListener() {
+        @Override
+        public void onAnimationStart(Animation animation) {}
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+            mLabel.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {}
+    };
+
+    /**
+     * Animation listener triggered when hiding the label
+     */
+    private Animation.AnimationListener hideLabelAnimationListener = new Animation.AnimationListener() {
+        @Override
+        public void onAnimationStart(Animation animation) {}
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+            mLabel.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {}
+    };
 }
