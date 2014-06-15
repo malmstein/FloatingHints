@@ -12,17 +12,40 @@
   android:background="@color/font_anthrazit"
   tools:context="com.malmstein.floatinghints.demo.FloatDemoActivity">
 
-  <com.malmstein.floatinghints.FloatEditTextLayout
+  <TextView
+    style="@style/FloatLabel.Form.Header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:floatLayoutTextAppearance="@style/FloatLabel.Text">
+    android:text="@string/float_demo_intro" />
+
+  <com.malmstein.floatinghints.FloatEditTextLayout
+    android:layout_marginTop="@dimen/form_horizontal_padding"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:floatLayoutTextAppearance="@style/FloatLabel.Label">
 
     <EditText
-      android:id="@+id/fragment_signin_email"
+      style="@style/FloatLabel.Form.Text"
+      android:id="@+id/float_login_email"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:hint="@string/hint_email"
       android:inputType="textEmailAddress" />
+
+  </com.malmstein.floatinghints.FloatEditTextLayout>
+
+  <com.malmstein.floatinghints.FloatEditTextLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:floatLayoutTextAppearance="@style/FloatLabel.Label">
+
+    <EditText
+      style="@style/FloatLabel.Form.Text"
+      android:id="@+id/float_login_password"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/hint_password"
+      android:inputType="textPassword" />
 
   </com.malmstein.floatinghints.FloatEditTextLayout>
 

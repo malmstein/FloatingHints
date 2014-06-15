@@ -2,5 +2,6 @@
 
   <!-- TEXT SIZE -->
   <dimen name="text_xs">12sp</dimen>
+  <dimen name="text_s">16sp</dimen>
 
 </resources>

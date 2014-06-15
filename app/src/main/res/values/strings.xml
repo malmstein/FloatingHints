@@ -6,6 +6,8 @@
   <string name="title_activity_float_demo">FloatingHints Demo</string>
 
   <!-- Strings related to forms -->
+  <string name="float_demo_intro">This is a demo of the FloatingHintLayouts, type and delete from the EditText and watch the magic happen</string>
   <string name="hint_email">Email</string>
+  <string name="hint_password">Password</string>
 
 </resources>
