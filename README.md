@@ -7,7 +7,7 @@ Custom implementation of the Floating Label pattern.
 
 ![Demo gif](https://raw.githubusercontent.com/malmstein/FloatingHints/master/art/floating_fade.gif)
 
-Introduced in a series of posts about [Forms in Android](http://www.malmstein.com/blog/2014/06/09/your-forms-dont-need-to-be-ugly-part-2/)
+Introduced in a series of posts about [Forms in Android](http://www.malmstein.com/blog/2014/06/15/your-forms-dont-need-to-be-ugly-part-2/)
 
 Dependencies
 ------------
@@ -32,7 +32,7 @@ Usage
 -----
 
 ```xml
-  <com.malmstein.floatinghints.FloatEditTextLayout
+  <com.malmstein.floatinghints.FloatingHintEditTextLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:floatLayoutInAnimation="@anim/abc_fade_in"
@@ -47,7 +47,7 @@ Usage
       android:hint="@string/hint_email"
       android:inputType="textEmailAddress" />
 
-  </com.malmstein.floatinghints.FloatEditTextLayout>
+  </com.malmstein.floatinghints.FloatingHintEditTextLayout>
 
 ```
 
@@ -58,15 +58,16 @@ You can use your own styiling for the EditText, in addition to this there are so
 that can be edited from the FloatingLayout
 
 ```xml
-<declare-styleable name="FloatEditTextLayout">
-  <attr name="floatLayoutTextAppearance" format="reference" />
-  <attr name="floatLayoutInAnimation" format="reference" />
-  <attr name="floatLayoutOutAnimation" format="reference" />
-  <attr name="floatLayoutSidePadding" format="reference|dimension" />
+ <declare-styleable name="FloatingHintEditTextLayout">
+    <attr name="floatingHintTextAppearance" format="reference" />
+    <attr name="floatingHintSidePadding" format="reference|dimension" />
+    <attr name="floatingHintInAnimation" format="reference" />
+    <attr name="floatingHintOutAnimation" format="reference" />
+  </declare-styleable>
 
 ```
 
-By modifying the `floatLayoutInAnimation` and `floatLayoutOutAnimation` one can set the custom 
+By modifying the `floatingHintInAnimation` and `floatingHintOutAnimation` one can set the custom 
 animation that will make the floating label to appear and dissappear.
 
 
