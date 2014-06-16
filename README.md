@@ -5,7 +5,9 @@ Custom implementation of the Floating Label pattern.
 
 **Customize the animation** used to show and hide the label via XML
 
-![Demo gif](https://raw.githubusercontent.com/malmstein/FloatingHints/master/floating.gif)
+![Demo gif](https://raw.githubusercontent.com/malmstein/FloatingHints/master/art/floating_fade.gif)
+
+Introduced in a series of posts about [Forms in Android](http://www.malmstein.com/blog/2014/06/09/your-forms-dont-need-to-be-ugly-part-2/)
 
 Dependencies
 ------------
@@ -30,9 +32,11 @@ Usage
 -----
 
 ```xml
-  <com.malmstein.floatinghints.FloatEditTextLayout    
+  <com.malmstein.floatinghints.FloatEditTextLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:floatLayoutInAnimation="@anim/abc_fade_in"
+    app:floatLayoutOutAnimation="@anim/abc_fade_out"
     app:floatLayoutTextAppearance="@style/FloatLabel.Label">
 
     <EditText
