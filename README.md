@@ -15,17 +15,16 @@ Dependencies
 To get the current snapshot version:
 
 ```groovy
-buildscript {
-    repositories {    
-        mavenCentral()        
-        maven {        
-            url "https://oss.sonatype.org/content/repositories/snapshots/"            
-        }        
-    }    
-    dependencies {    
-        classpath 'com.malmstein:floatinghints:0.0.1-SNAPSHOT'        
-    }    
+repositories {    
+    maven {        
+        url "https://oss.sonatype.org/content/repositories/snapshots/"            
+    }
 }
+        
+dependencies {    
+    classpath 'com.malmstein:floatinghints:0.0.1-SNAPSHOT'        
+}    
+
 ```
 
 Usage
